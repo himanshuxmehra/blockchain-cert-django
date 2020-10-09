@@ -1,0 +1,36 @@
+{% extends 'csvmanager/main.html' %}
+
+{% block content %}
+
+<div class="container main">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 border rounded bg">
+            <form class="mb-3 mt-3">
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept=".csv" />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file</h3>
+                    </div>
+                </div>
+                <div class="file-upload-content">
+                    <div class="image-title-wrap">
+                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                class="image-title">Uploaded Image</span></button>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control text-center" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control text-center" placeholder="Password">
+                </div>
+                <input class="btn btn-primary btn-lg btn-block float-right btn-sm mb-3" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+{% endblock %}
