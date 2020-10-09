@@ -1,7 +1,17 @@
-    
+body{
+    background-image: url("/static/images/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+}
 .main{
     margin-top: 60px;
 }
 .bg{
     background-color:  whitesmoke;
+    opacity: 0.8;
+}
+.bg:hover {
+    background-color:  whitesmoke;
+    opacity: 1.0;
 }
