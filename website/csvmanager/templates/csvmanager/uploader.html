@@ -6,31 +6,44 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 border rounded bg">
-            <form class="mb-3 mt-3">
+
+            <form class="mb-3 mt-3" id="demoForm">
                 <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept=".csv" />
+                    <input class="file-upload-input" type='file' onchange="readURL(this);"  id="fileUpload" accept=".csv"
+                        required />
                     <div class="drag-text">
                         <h3>Drag and drop a file</h3>
                     </div>
+
                 </div>
                 <div class="file-upload-content">
                     <div class="image-title-wrap">
-                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                        <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload()" />
+                        <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"  class="remove-image">Remove <span
                                 class="image-title">Uploaded Image</span></button>
                     </div>
+                    
                 </div>
+               
 
                 <div class="form-group mt-3">
-                    <input type="text" class="form-control text-center" placeholder="Username">
+                    <input type="text" name="username" class="form-control text-center"  placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control text-center" placeholder="Password">
+                    <input type="password" name="password" class="form-control text-center"  placeholder="Password" required>
                 </div>
-                <input class="btn btn-primary btn-lg btn-block float-right btn-sm mb-3" type="submit" value="Submit">
+                <button class="btn btn-primary btn-lg btn-block btn-sm" type="submit">submit</button>
             </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row mt-3 mb-3">
+        <div class="col-md-12 bg-white">
+            <div id="dvCSV" class="st">
+            </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 
 {% endblock %}
