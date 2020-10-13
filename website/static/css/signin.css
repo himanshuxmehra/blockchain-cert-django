@@ -1,0 +1,25 @@
+/* body */
+body{
+    background-color:  rgba(176, 176, 243, 0.631);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+.main{
+    margin-top: 100px!important;
+}
+/* form */
+.sty{
+    background-color: whitesmoke;
+    border-radius: 25px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.sty h4{
+    font-family: 'Ultra', serif;
+}
+.sty form input{
+    border-radius: 15px;
+}
+.sty form button{
+    border-radius: 15px;
+}

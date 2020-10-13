@@ -1,0 +1,42 @@
+/* body */
+body{
+    background-color:  rgba(176, 176, 243, 0.631);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+
+
+
+/* form */
+
+.signup{
+    background-color: whitesmoke!important;
+    /* margin-top: 60px!important; */
+    border-radius: 25px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.signup h4{
+    font-family: 'Ultra', serif;
+}
+.form-control{
+    border-radius: 15px;
+}
+.signupbtn{
+    border-radius: 15px;
+}
+/* content */
+.tc{
+    margin-top: 60px;
+}
+.styl{
+    padding-top: 120px!important;
+}
+.styl h1{
+    margin-bottom: 30px!important;
+    font-size: 50px;
+    font-weight: 1000;
+    color: rgba(86, 95, 60, 0.823);
+    text-shadow: 10px 20px 10px  rgba(111, 107, 107, 0.96);
+    font-family: 'Luckiest Guy', cursive;
+}
