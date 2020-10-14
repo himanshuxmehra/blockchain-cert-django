@@ -15,4 +15,4 @@ def signup(request):
     return render(request, 'csvmanager/signup.html', context)
 
 def signin(request):
-    return render(request, 'csvmanager/signin.html', context)
+    return render(request, 'csvmanager/signin.html')

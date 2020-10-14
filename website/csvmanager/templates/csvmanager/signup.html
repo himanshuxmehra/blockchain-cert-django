@@ -1,6 +1,4 @@
 {% load static %}
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,15 +21,16 @@
             <!-- form -->
             <div class="col-md-5 signup">
                 <h4 class="text-center mb-3 mt-3 ">Register Your self</h4>
-                <form action="">
-                    <input type="email" class="form-control mb-3" id="" aria-describedby="emailHelp" placeholder="Email"
-                        required>
-                    <input type="password" class="form-control mb-3" id="password" placeholder="Password" required>
-                    <input type="password" class="form-control mb-3" id="confirm_password" placeholder="Confirm Password" required>
-                    <input type="text" class="form-control mb-3" id="" pattern="[A-Za-z]{1,40}" placeholder="Name"
-                        title="please enter alphabetic characters only " required>
-                    <input type="text" class="form-control mb-3" id="" pattern="[A-Za-z]" placeholder="University Name" title="please enter alphabetic characters only " required>
-
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form }}
+<!--                    <input type="email" class="form-control mb-3" name="email" aria-describedby="emailHelp" placeholder="Email"-->
+<!--                        required>-->
+<!--                    <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Password" required>-->
+<!--                    <input type="password" class="form-control mb-3" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>-->
+<!--                    <input type="text" class="form-control mb-3" pattern="[A-Za-z]{1,40}" placeholder="Name" name="name"-->
+<!--                        title="please enter alphabetic characters only " required>-->
+<!--                    <input type="text" class="form-control mb-3" id="" pattern="[A-Za-z]" name="institute_name" placeholder="University Name" title="please enter alphabetic characters only " required>-->
 
                     <button type="submit" class="btn btn-success  btn-block mb-3  signupbtn">Signup </button>
                 </form>

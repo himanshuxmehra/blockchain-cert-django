@@ -1,14 +1,14 @@
 from django.db import models
+import uuid
 
 # Create your models here.
-
 class User(models.Model):
-    username = models.CharField(max_length=60, null=True)
+    user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     email = models.CharField(max_length=200, null=True)
-    password = models.CharField(max_length=200, null=True)
+    password = models.CharField(max_length=255, null=True)
     name = models.CharField(max_length=200, null=True)
     university_name = models.CharField(max_length=200, null=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True) 
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name
