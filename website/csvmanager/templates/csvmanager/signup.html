@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/sign.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
     <!-- css -->
 </head>
 
@@ -20,7 +18,7 @@
         <div class="row tc">
             <!-- form -->
             <div class="col-md-5 signup">
-                <h4 class="text-center mb-3 mt-3 ">Register Your self</h4>
+                <h4 class="text-center mb-3 mt-3 font-weight-bold">Register Your self</h4>
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
