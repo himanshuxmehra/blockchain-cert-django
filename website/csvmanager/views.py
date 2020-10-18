@@ -27,11 +27,19 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=password)
             login(request, user)
-            return redirect('dashboard')
+            return redirect('signin')
         else:
             form = UserCreationForm()
     return render(request, 'csvmanager/signup.html', {'form': form})
 
 
 def signin(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
     return render(request, 'csvmanager/signin.html')

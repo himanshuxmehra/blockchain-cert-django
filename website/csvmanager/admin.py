@@ -15,12 +15,12 @@ class UserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('User Details', {'fields': ('name', 'university_name', 'date_joined', 'last_login')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {'fields': ('is_admin', 'is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+            'fields': ('email', 'password1', 'password2', 'is_admin', 'is_staff', 'is_active')}
          ),
         ('User Details', {'fields': ('name', 'university_name')}),
     )
