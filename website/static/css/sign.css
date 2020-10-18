@@ -16,9 +16,7 @@ body{
     border-radius: 25px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-.signup h4{
-    font-family: 'Ultra', serif;
-}
+
 .form-control{
     border-radius: 15px;
 }
