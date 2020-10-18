@@ -69,6 +69,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'csvmanager.User'
+
 WSGI_APPLICATION = 'website.wsgi.application'
 
 
