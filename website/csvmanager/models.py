@@ -66,6 +66,7 @@ class User(AbstractBaseUser):
 
 
 class CSVFile(models.Model):
+    objects = None
     STATUS = (
         ('Idle', 'Idle'),
         ('Processing', 'Processing'),
@@ -80,7 +81,7 @@ class CSVFile(models.Model):
     title = models.CharField(max_length=200, null=True)
     csv = models.FileField(upload_to='%Y/%m/%d/', null=True)
     network = models.CharField(max_length=60, null=True, choices=NETWORK)
-    status = models.CharField(max_length=60, null=True, choices=STATUS)
+    status = models.CharField(default='Idle', max_length=60, null=True, choices=STATUS)
 
     def __str__(self):
         return self.title

@@ -1,7 +1,7 @@
 {% extends 'csvmanager/main.html' %}
 
 {% block content %}
-{%load static %}
+{% load static %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark ry">
     <a class="navbar-brand font-weight-bold" href="#">Dashboard</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -17,8 +17,8 @@
                         alt="user">
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
-                    <h6 class="dropdown-item">User</h6>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <h6 class="dropdown-item">{{ user.name }}</h6>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
             </li>
         </ul>
@@ -33,22 +33,24 @@
     <!-- </div> -->
     <div class="row mb-5 new">
         <div class="col-md-3">
-            <div class="image-upload-wrap mb-4 bg-white drop-style">
-                <input class="file-upload-input" type='file' multiple accept="csv/*" onchange="readURL(this);" id="fileUpload" accept=".csv"
-                    required />
-                <div class="drag-text">
-                    <h3>Drag and drop a file</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="image-upload-wrap mb-4 bg-white drop-style">
+                    <input class="file-upload-input" type='file' name="csvFile" multiple accept="csv/*" onchange="readURL(this);" id="fileUpload" accept=".csv"
+                        required />
+                    <div class="drag-text">
+                        <h3>Drag and drop a file</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="file-upload-content">
-                <div class="image-title-wrap mt-4">
-                    <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload(); myFunction();" />
-                    <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"
-                        class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                <div class="file-upload-content">
+                    <div class="image-title-wrap mt-4">
+                        <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload(); myFunction();" />
+                        <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"
+                            class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                        <button type="submit" class="btn btn-primary" name="submit">Add to Blockchain</button>
+                    </div>
                 </div>
-
-            </div>
-
+            </form>
         </div>
         <div class="col-md-6">
             <!-- <div class="col-md-12 bg-white mb-4"> -->
@@ -77,14 +79,19 @@
         <div class="col-md-3">
             <ul class="list-group mt-3 mb-3 list-group-flush my-shadow"> 
                 <li class="list-group-item text-center bg-primary-a text-uppercase text-white font-weight-bold">
-                    Uploaded FileS
+                    Uploaded Files
                 </li>
                 <!-- upload file section here -->
-                <li class="list-group-item">Test.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
-                <li class="list-group-item">Morbi.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
-                <li class="list-group-item">Porta.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
-                <li class="list-group-item">eros.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
-              </ul>
+                {% for i in CSVs %}
+                    <a href="{{ i.csv.url }}">
+                        <li class="list-group-item">
+                            {{ i.title }}
+                            {{ i.status }}
+                            <i class="fas fa-times-circle float-right my-hover" title="Remove"></i>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
         </div>
         <footer class="footer mt-auto py-3">
             <div class="container text-center">
