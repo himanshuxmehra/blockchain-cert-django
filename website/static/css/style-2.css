@@ -12,6 +12,7 @@
     outline: none;
     opacity: 0;
     cursor: pointer;
+    /* box-shadow: 10px 10px 5px grey; */
   }
   
   .image-upload-wrap {
@@ -19,11 +20,16 @@
     border: 4px dashed #149eee;
     position: relative;
   }
-  
-  .image-dropping,
+  .image-upload-wrap:hover {
+    margin-top: 20px;
+    border: 4px dashed #149eee;
+    position: relative;
+  }
+   
+   .image-dropping,
   .image-upload-wrap:hover {
     background-color: #149eeebd;
-    border: 4px dashed #ffffff;
+    border: 4px dashed #e13838;
   }
   
   .image-title-wrap {

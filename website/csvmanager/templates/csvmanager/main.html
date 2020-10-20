@@ -8,10 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Csv Upload</title>
     <!-- css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/style-2.css' %}">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
     <!-- css// -->
 </head>
 
@@ -22,7 +24,11 @@
 
 
     {% endblock %}
-
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+          <span class="text-white"> <i class="fa fa-copyright" aria-hidden="true">2020 Copyright : <span class="text-dark"> Blockchain Certificate</span></i></span>
+        </div>
+    </footer>
 </body>
 <!-- js -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -40,6 +46,11 @@
     function rem() {
         var myobj = document.getElementById("dvCSV");
         myobj.remove();
+    }
+</script>
+<script>
+    function myFunction() {
+        document.getElementById("Output").innerHTML = "Output Result ";
     }
 </script>
 <!-- js// -->

@@ -1,49 +1,98 @@
 {% extends 'csvmanager/main.html' %}
 
 {% block content %}
+{%load static %}
 
-<div class="container main">
+<div class="container-fluid main">
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 border rounded bg">
-
-            <form class="mb-3 mt-3" id="demoForm">
-                <div class="image-upload-wrap">
-                    <input class="file-upload-input" type='file' onchange="readURL(this);"  id="fileUpload" accept=".csv"
-                        required />
-                    <div class="drag-text">
-                        <h3>Drag and drop a file</h3>
-                    </div>
-
+        <div class="col-md-12 border-bottom ry">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand font-weight-bold" href="#">Dashboard</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse ml-auto" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <img src="{% static 'images/user.png' %}" height="40px" class="rounded-circle my-user shadow-sm"
+                                    alt="user">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
+                                <h6 class="dropdown-item">User</h6>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="file-upload-content">
-                    <div class="image-title-wrap">
-                        <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload()" />
-                        <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"  class="remove-image">Remove <span
-                                class="image-title">Uploaded Image</span></button>
-                    </div>
+            </nav>
+        </div>
+
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="image-upload-wrap mb-4 bg-white drop-style">
+                <input class="file-upload-input" type='file' multiple accept="csv/*" onchange="readURL(this);" id="fileUpload" accept=".csv"
+                    required />
+                <div class="drag-text">
+                    <h3>Drag and drop a file</h3>
+                </div>
+            </div>
+            <div class="file-upload-content">
+                <div class="image-title-wrap mt-4">
+                    <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload(); myFunction();" />
+                    <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"
+                        class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <!-- <div class="col-md-12 bg-white mb-4"> -->
+                <h4 class="text-center font-weight-bold my-output mt-2 rounded border-bottom-0 mb-0" id="Output" ></h4>
+                <div id="dvCSV" class="st  mb-3 mt-0">
                     
                 </div>
-               
+                <h2 class="text-center pt-5 pb-5 font-weight-bold text-muted "> Here You See Output Result..</h2>
+            <!-- </div> -->
 
-                <div class="form-group mt-3">
-                    <input type="text" name="username" class="form-control text-center"  placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control text-center"  placeholder="Password" required>
-                </div>
-                <button class="btn btn-primary btn-lg btn-block btn-sm" type="submit">submit</button>
-            </form>
+            <!-- <form class="mb-3 mt-3" id="demoForm">
 
-        </div>
-        <div class="col-md-3"></div>
-    </div>
-    <div class="row mt-3 mb-3">
-        <div class="col-md-12 bg-white">
-            <div id="dvCSV" class="st">
+
+
+            <div class="form-group mt-3">
+                <input type="text" name="username" class="form-control text-center" placeholder="Username" required>
             </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control text-center" placeholder="Password"
+                    required>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block btn-sm" type="submit">submit</button>
+        </form> -->
+
         </div>
+        <div class="col-md-3">
+            <ul class="list-group mt-3 mb-3 list-group-flush my-shadow"> 
+                <li class="list-group-item text-center bg-primary-a text-uppercase text-white font-weight-bold">
+                    Uploaded FileS
+                </li>
+                <!-- upload file section here -->
+                <li class="list-group-item">Test.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
+                <li class="list-group-item">Morbi.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
+                <li class="list-group-item">Porta.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
+                <li class="list-group-item">eros.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
+              </ul>
+        </div>
+      
     </div>
+    <!-- <div class="row mt-3 mb-3">
+        
+    </div> -->
+    
 </div>
+
 
 {% endblock %}
