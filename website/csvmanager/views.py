@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import RegistrationForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url='signin')
 def home(request):
     context = {}
     return render(request, 'csvmanager/uploader.html', context)
 
 
+@login_required(login_url='signin')
 def dashboard(request):
     context = {}
     return render(request, 'csvmanager/uploader.html', context)
@@ -43,3 +46,8 @@ def signin(request):
             return redirect('dashboard')
 
     return render(request, 'csvmanager/signin.html')
+
+
+def logoutuser(request):
+    logout(request)
+    return redirect('signin')

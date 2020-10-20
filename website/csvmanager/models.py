@@ -65,20 +65,6 @@ class User(AbstractBaseUser):
         return True
 
 
-# class User(AbstractUser):
-#     """User model."""
-#
-#     username = None
-#     user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-#     email = models.EmailField('email address', unique=True)
-#     name = models.CharField(max_length=200, null=True)
-#     university_name = models.CharField(max_length=200, null=True)
-#     date_created = models.DateTimeField(auto_now_add=True, null=True)
-#
-#     USERNAME_FIELD = 'email'
-#     REQUIRED_FIELDS = []
-
-
 class CSVFile(models.Model):
     STATUS = (
         ('Idle', 'Idle'),
