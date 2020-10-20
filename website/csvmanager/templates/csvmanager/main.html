@@ -24,11 +24,7 @@
 
 
     {% endblock %}
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-          <span class="text-white"> <i class="fa fa-copyright" aria-hidden="true">2020 Copyright : <span class="text-dark"> Blockchain Certificate</span></i></span>
-        </div>
-    </footer>
+    
 </body>
 <!-- js -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -53,6 +49,13 @@
         document.getElementById("Output").innerHTML = "Output Result ";
     }
 </script>
+<script>
+    $(document).ready(function(){
+      $("#upload").click(function(){
+        $(".out-txt").remove();
+      });
+    });
+    </script>
 <!-- js// -->
 
 </html>

@@ -2,36 +2,36 @@
 
 {% block content %}
 {%load static %}
-
-<div class="container-fluid main">
-    <div class="row">
-        <div class="col-md-12 border-bottom ry">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand font-weight-bold" href="#">Dashboard</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse ml-auto" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <img src="{% static 'images/user.png' %}" height="40px" class="rounded-circle my-user shadow-sm"
-                                    alt="user">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
-                                <h6 class="dropdown-item">User</h6>
-                                <a class="dropdown-item" href="#">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark ry">
+    <a class="navbar-brand font-weight-bold" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ml-auto" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown active">
+                <a class="nav-link " href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="{% static 'images/user.png' %}" height="40px" class="rounded-circle my-user shadow-sm"
+                        alt="user">
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdown01">
+                    <h6 class="dropdown-item">User</h6>
+                    <a class="dropdown-item" href="#">Logout</a>
                 </div>
-            </nav>
-        </div>
-
+            </li>
+        </ul>
     </div>
-    <div class="row mb-5">
+</nav>
+<div class="container-fluid main">
+    <!-- <div class="row">
+        <div class="col-md-12 border-bottom ">
+           
+        </div> -->
+
+    <!-- </div> -->
+    <div class="row mb-5 new">
         <div class="col-md-3">
             <div class="image-upload-wrap mb-4 bg-white drop-style">
                 <input class="file-upload-input" type='file' multiple accept="csv/*" onchange="readURL(this);" id="fileUpload" accept=".csv"
@@ -56,7 +56,7 @@
                 <div id="dvCSV" class="st  mb-3 mt-0">
                     
                 </div>
-                <h2 class="text-center pt-5 pb-5 font-weight-bold text-muted "> Here You See Output Result..</h2>
+                <h2 class="text-center pt-5 pb-5 font-weight-bold text-muted out-txt"> Here You See Output Result..</h2>
             <!-- </div> -->
 
             <!-- <form class="mb-3 mt-3" id="demoForm">
@@ -86,7 +86,11 @@
                 <li class="list-group-item">eros.csv <i class="fas fa-times-circle float-right my-hover" title="Remove"></i></li>
               </ul>
         </div>
-      
+        <footer class="footer mt-auto py-3">
+            <div class="container text-center">
+              <span class="text-white"> <i class="fa fa-copyright" aria-hidden="true">2020 Copyright : <span class="text-dark"> Blockchain Certificate</span></i></span>
+            </div>
+        </footer>
     </div>
     <!-- <div class="row mt-3 mb-3">
         
