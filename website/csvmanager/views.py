@@ -16,7 +16,7 @@ def home(request):
 
 @login_required(login_url='signin')
 def dashboard(request):
-    email = request.session['email']
+    email = request.user.email
     user = User.objects.get(email=email)
     csvfiles = user.csvfile_set.all()
     context = {'CSVs': csvfiles, 'user': user}
@@ -54,7 +54,6 @@ def signin(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            request.session['email'] = email
             return redirect('dashboard')
 
     return render(request, 'csvmanager/signin.html')
