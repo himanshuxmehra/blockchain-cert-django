@@ -36,29 +36,46 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="image-upload-wrap mb-4 bg-white drop-style">
-                    <input class="file-upload-input" type='file' name="csvFile" multiple accept="csv/*" onchange="readURL(this);" id="fileUpload" accept=".csv"
-                        required />
+                    <input class="file-upload-input" type='file' name="csvFile" multiple accept="csv/*"
+                        onchange="readURL(this);" id="fileUpload" accept=".csv" required />
                     <div class="drag-text">
                         <h3>Drag and drop a file</h3>
                     </div>
                 </div>
                 <div class="file-upload-content">
                     <div class="image-title-wrap mt-4">
-                        <input type="button" class="btn btn-success" id="upload" value="view" onclick="Upload(); myFunction();" />
-                        <button type="button" class="btn btn-secondary" onclick="removeUpload(); rem(); location.reload();"
-                            class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                        <button type="submit" class="btn btn-primary" name="submit">Add to Blockchain</button>
+                        <input type="button" class="btn btn-success mb-3" id="upload" value="view"
+                            onclick="Upload(); myFunction();" />
+                        <button type="button" class="btn btn-secondary mb-3"
+                            onclick="removeUpload(); rem(); location.reload();" class="remove-image">Remove <span
+                                class="image-title">Uploaded Image</span></button>
+                        <button type="submit" class="btn btn-danger mb-3" name="submit">Add to Blockchain</button>
                     </div>
                 </div>
+                <!-- public and private dropdown -->
+
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect01" required>
+                        <option selected>Choose Network ...</option>
+                        <option value="1">Public</option>
+                        <option value="2">Private</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Title" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
             </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <!-- <div class="col-md-12 bg-white mb-4"> -->
-                <h4 class="text-center font-weight-bold my-output mt-2 rounded border-bottom-0 mb-0" id="Output" ></h4>
-                <div id="dvCSV" class="st  mb-3 mt-0">
-                    
-                </div>
-                <h2 class="text-center pt-5 pb-5 font-weight-bold text-muted out-txt"> Here You See Output Result..</h2>
+            <h4 class="text-center font-weight-bold my-output mt-2 rounded border-bottom-0 mb-0" id="Output"></h4>
+            <div id="dvCSV" class="st mb-3 mt-0">
+
+            </div>
+            <h2 class="text-center pt-5 pb-5 font-weight-bold text-muted out-txt"> Here You See Output Result..</h2>
             <!-- </div> -->
 
             <!-- <form class="mb-3 mt-3" id="demoForm">
@@ -76,33 +93,62 @@
         </form> -->
 
         </div>
-        <div class="col-md-3">
-            <ul class="list-group mt-3 mb-3 list-group-flush my-shadow"> 
+        <div class="col-md-4 text-center">
+            <ul class="list-group mt-3 mb-3 list-group-flush my-shadow">
                 <li class="list-group-item text-center bg-primary-a text-uppercase text-white font-weight-bold">
                     Uploaded Files
                 </li>
                 <!-- upload file section here -->
-                {% for i in CSVs %}
-                    <a href="{{ i.csv.url }}">
-                        <li class="list-group-item">
-                            {{ i.title }}
-                            {{ i.status }}
-                            <i class="fas fa-times-circle float-right my-hover" title="Remove"></i>
-                        </li>
-                    </a>
-                {% endfor %}
+                <!--{% for i in CSVs %}
+                <a href="{{ i.csv.url }}">
+                    <li class="list-group-item">
+                        {{ i.title }}
+                        {{ i.status }}
+                        <i class="fas fa-times-circle float-right my-hover" title="Remove"></i>
+                    </li>
+                </a>
+                {% endfor %}-->
             </ul>
+            <div class="hello shadow mb-5">
+                <table class="table mytable table-hover rounded-lg">
+                    <thead>
+                        <tr>
+                            <th scope="col">File
+                            </th>
+                            <th scope="col">Status
+
+                            </th>
+                            <th scope="col">Delete/Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>File.csv</td>
+                            <td>Pending</td>
+                            <td><i class="fas fa-times-circle text-center my-hover" title="Remove"></i></td>
+                        </tr>
+                        <tr>
+                            <td>demo.csv</td>
+                            <td>Pending</td>
+                            <td><i class="fas fa-times-circle text-center my-hover" title="Remove"></i></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
         </div>
         <footer class="footer mt-auto py-3">
             <div class="container text-center">
-              <span class="text-white"> <i class="fa fa-copyright" aria-hidden="true">2020 Copyright : <span class="text-dark"> Blockchain Certificate</span></i></span>
+                <span class="text-white"> <i class="fa fa-copyright" aria-hidden="true">2020 Copyright : <span
+                            class="text-dark"> Blockchain Certificate</span></i></span>
             </div>
         </footer>
     </div>
     <!-- <div class="row mt-3 mb-3">
         
     </div> -->
-    
+
 </div>
 
 
