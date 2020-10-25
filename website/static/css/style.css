@@ -67,3 +67,16 @@ footer{
 .new{
     margin-top: 70px;
 }
+
+.my-drop-menu .dropdown-item :hover{
+ background-color: rgb(178, 178, 235);
+}
+
+.mytable{
+    background-color: white;
+    
+} 
+
+.hello{
+    overflow: auto;
+}
