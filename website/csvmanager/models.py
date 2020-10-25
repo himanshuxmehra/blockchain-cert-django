@@ -82,6 +82,7 @@ class CSVFile(models.Model):
     csv = models.FileField(upload_to='%Y/%m/%d/', null=True)
     network = models.CharField(max_length=60, null=True, choices=NETWORK)
     status = models.CharField(default='Idle', max_length=60, null=True, choices=STATUS)
+    result_csv = models.FileField(null=False, editable=False)
 
     def __str__(self):
         return self.title
