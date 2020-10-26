@@ -1,6 +1,7 @@
+from django.http import Http404
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from .forms import RegistrationForm
+from .forms import RegistrationForm, CSVUploadForm
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
@@ -11,19 +12,24 @@ from .decorators import *
 # Create your views here.
 @login_required(login_url='signin')
 def home(request):
-    return HttpResponse('test page')
+    return redirect('dashboard')
 
 
 @login_required(login_url='signin')
 def dashboard(request):
-    email = request.user.email
-    user = User.objects.get(email=email)
-    csvfiles = user.csvfile_set.all()
-    context = {'CSVs': csvfiles, 'user': user}
+    current_user = request.user
+    csvfiles = current_user.csvfile_set.all()
     if request.method == 'POST':
-        uploadedcsv = request.FILES['csvFile']
-        fs = FileSystemStorage(location=settings.MEDIA_ROOT + '/%Y/%m/%d/')
-        fs.save(uploadedcsv.name, uploadedcsv)
+        form = CSVUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            csv = form.save(commit=False)
+            csv.uploader = request.user
+            csv.csv = request.FILES['csv']
+            csv.save()
+            return redirect('dashboard')
+    else:
+        form = CSVUploadForm()
+    context = {'CSVs': csvfiles, 'user': current_user, 'form': form}
     return render(request, 'csvmanager/uploader.html', context)
 
 

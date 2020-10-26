@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User, CSVFile
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -67,3 +67,50 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2', 'name', 'university_name')
+
+
+class CSVUploadForm(forms.ModelForm):
+    NETWORK = (
+        ('Public', 'Public'),
+        ('Private', 'Private')
+    )
+    csv = forms.FileField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "class": "file-upload-input",
+                "type": "file",
+                "accept": ".csv",
+                "onchange": "readURL(this);",
+                "id": "fileUpload"
+            }
+        )
+    )
+    network = forms.CharField(
+        max_length=200,
+        required=False,
+        label='Select Blockchain Network',
+        widget=forms.Select(
+            choices=NETWORK,
+            attrs={
+                "class": "custom-select",
+                "id": "inputGroupSelect01",
+                "placeholder": "Select Blockchain Network"
+            }
+        )
+    )
+    title = forms.CharField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Title"
+            }
+        )
+    )
+
+    class Meta:
+        model = CSVFile
+        fields = ['title', 'csv', 'network']

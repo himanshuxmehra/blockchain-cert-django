@@ -28,7 +28,7 @@ class UserAdmin(UserAdmin):
 
 
 class CSVFileAdmin(admin.ModelAdmin):
-    readonly_fields = ('result_csv',)
+    readonly_fields = ('result_csv', 'status')
 
 
 # Register your models here.

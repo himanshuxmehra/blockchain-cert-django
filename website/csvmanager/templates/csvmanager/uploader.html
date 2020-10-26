@@ -1,5 +1,5 @@
 {% extends 'csvmanager/main.html' %}
-
+{% load filename %}
 {% block content %}
 {% load static %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark ry">
@@ -36,8 +36,7 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="image-upload-wrap mb-4 bg-white drop-style">
-                    <input class="file-upload-input" type='file' name="csvFile" multiple accept="csv/*"
-                        onchange="readURL(this);" id="fileUpload" accept=".csv" required />
+                    {{ form.csv }}
                     <div class="drag-text">
                         <h3>Drag and drop a file</h3>
                     </div>
@@ -49,24 +48,20 @@
                         <button type="button" class="btn btn-secondary mb-3"
                             onclick="removeUpload(); rem(); location.reload();" class="remove-image">Remove <span
                                 class="image-title">Uploaded Image</span></button>
-                        <button type="submit" class="btn btn-danger mb-3" name="submit">Add to Blockchain</button>
                     </div>
                 </div>
                 <!-- public and private dropdown -->
 
                 <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect01" required>
-                        <option selected>Choose Network ...</option>
-                        <option value="1">Public</option>
-                        <option value="2">Private</option>
-                    </select>
+                    {{ form.network }}
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Title" required>
+                    {{ form.title }}
                 </div>
+                {{ form.errors }}
+                {{ form.non_field_errors }}
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
-
             </form>
         </div>
         <div class="col-md-5">
@@ -116,23 +111,26 @@
                             <th scope="col">File
                             </th>
                             <th scope="col">Status
-
+                            </th>
+                            <th scope="col">
+                                Results
                             </th>
                             <th scope="col">Delete/Remove</th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for i in CSVs %}
                         <tr>
-                            <td>File.csv</td>
-                            <td>Pending</td>
+                            <td>{{ i.csv|getfilename }}</td>
+                            <td>{{ i.status }}</td>
+                            {% if i.result_csv %}
+                                <td><a href="{{ i.result_csv.url }}" class="btn btn-primary">{{ i.result_csv|getfilename }}</a></td>
+                            {% else %}
+                            <td><div class="btn btn-secondary">File Not Processed yet!</div></td>
+                            {% endif %}
                             <td><i class="fas fa-times-circle text-center my-hover" title="Remove"></i></td>
                         </tr>
-                        <tr>
-                            <td>demo.csv</td>
-                            <td>Pending</td>
-                            <td><i class="fas fa-times-circle text-center my-hover" title="Remove"></i></td>
-                        </tr>
-
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
