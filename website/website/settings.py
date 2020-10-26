@@ -26,7 +26,7 @@ SECRET_KEY = 'dww43mcq9^h5!vhel13#nf6^75@(x&7s1qscb6sb+%3qjbh117'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blockchain.rxdp.in']
 
 
 # Application definition
